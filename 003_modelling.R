@@ -1,7 +1,11 @@
 # Model: Create a decision tree model to predict if customer signing a term deposit.
 
-# Model-Plot: We shall implement a function to present a nice representation of the model,
+# Model-Plot: 
+# We shall implement a function to present a nice representation of the model, 
 # e.g. for a decision tree we should plot the tree and respective nodes.
+
+# Model-Performance: 
+# The model performance function should calculate the accuracy (or precision) of the model.
 
 plot_model <- function(model_res){
   rpart.plot(model_res)  
