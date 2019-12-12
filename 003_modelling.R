@@ -1,5 +1,11 @@
 # Model: Create a decision tree model to predict if customer signing a term deposit.
 
+model <- function(input_data,res_var){
+  rpart(res_var ~ ., data = input_data)
+}
+
+dt_model<- model(bmarketing,bmarketing$y)
+
 # Model-Plot: 
 # We shall implement a function to present a nice representation of the model, 
 # e.g. for a decision tree we should plot the tree and respective nodes.
