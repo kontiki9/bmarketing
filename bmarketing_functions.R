@@ -8,16 +8,20 @@ source("003_modelling.R")
 
 #################Loading data into the environment#################
 bmarketing <- read.csv2("bmarketing.csv",dec=".")
+bmarketing <- read.csv2("bmarketing2.csv",dec=".",sep=",")
 
 #Lets look at dataset and generate initial understanding about the column types
 str(bmarketing)
 summary(bmarketing)
 
 bmarketing <- clean(bmarketing)
+str(bmarketing)
+summary(bmarketing)
+
 bmarketing$month <- relevel_months(bmarketing$month)
 bmarketing$day_of_week <- relevel_days(bmarketing$day_of_week)
 
-dt_model <- model(bmarketing,bmarketing$y, model_type="decision_tree")
+dt_model <- model(bmarketing, model_type="decision_tree")
 summary(dt_model)
 plot_model(dt_model)
 predictions <- predict_model(dt_model, bmarketing)
