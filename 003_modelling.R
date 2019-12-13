@@ -20,7 +20,7 @@ model <- function(input_data,
 # e.g. for a decision tree we should plot the tree and respective nodes.
 
 plot_model <- function(model_res){
-  rpart.plot(model_res)  
+  rpart.plot(model_res,roundint=FALSE)  
 }
 
 # EXAMPLE:
