@@ -14,12 +14,21 @@ bmarketing <- read.csv2("bmarketing2.csv",dec=".",sep=",")
 str(bmarketing)
 summary(bmarketing)
 
+x <- colnames(bmarketing)
+
 bmarketing <- clean(bmarketing)
+x_ew <- colnames(bmarketing)
+
 str(bmarketing)
 summary(bmarketing)
 
+
+colnames(bmarketing) <- colnames(bmarketing) %>% tolower()
+
 bmarketing$month <- relevel_months(bmarketing$month)
 bmarketing$day_of_week <- relevel_days(bmarketing$day_of_week)
+
+bmarketing <- bmarketing[,-1]
 
 dt_model <- model(bmarketing, model_type="decision_tree")
 summary(dt_model)
