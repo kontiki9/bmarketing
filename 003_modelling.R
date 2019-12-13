@@ -1,12 +1,20 @@
 # Model: Create a decision tree model to predict if customer signing a term deposit.
 
 model <- function(input_data,
-                  res_var){
-  rpart(res_var ~ ., data = input_data)
+                  res_var,
+                  model_type="decision_tree"){
+  
+  stopifnot(model_type %in% c("decision_tree", "logistic_regression"))
+  
+  if(model_type=="decision_tree") model_res <- rpart(res_var ~ ., data = input_data)
+  if(model_type=="logistic_regression") model_res <- glm(res_var ~.,family=binomial(link='logit'),data=input_data)
+  model_res
 }
 
 # EXAMPLE:
-# dt_model<- model(bmarketing,bmarketing$y)
+# dt_model<- model(bmarketing,bmarketing$y, model_type="decision_tree")
+# summary(dt_model)
+
 
 # Model-Plot: 
 # We shall implement a function to present a nice representation of the model, 
